@@ -17,7 +17,7 @@ def btClear():
 def btAdd():
     firstNum = e.get()
     global input
-    result = int(firstNum)
+    input = int(firstNum)
     e.delete(0, END)
 
 def btEqual():
