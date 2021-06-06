@@ -9,3 +9,4 @@
     The 'AC' button clears the entry
     The '±' button negates the number
     The '%' button divides the number by 100
+    The '.' button adds decimal point
