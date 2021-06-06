@@ -46,6 +46,16 @@ def btDivide():
     type = "divide"
     e.delete(0, END)
 
+def btNegate():
+    firstNum = e.get()
+    if (len(firstNum) == 0):
+        e.insert(0, "-")
+    elif (len(firstNum) == 1 and firstNum[0] == '-'):
+        e.delete(0, END)
+    else:
+        e.delete(0, END)
+        e.insert(0, float(firstNum) * -1)
+
 def btEqual():
     secondNum = e.get()
     e.delete(0, END)
@@ -76,7 +86,7 @@ btminus = Button(root, text="-", width=5, pady=10, command=btMinus, highlightbac
 btmul = Button(root, text="×", width=5, pady=10, command=btMultiply, highlightbackground='#ACF4A8', fg='#2F4858')
 btdiv = Button(root, text="÷", width=5, pady=10, command=btDivide, highlightbackground='#ACF4A8', fg='#2F4858')
 btremainder = Button(root, text="%", width=5, pady=10, command=btDivide, highlightbackground='#71D3A9', fg='#2F4858')
-btnegate = Button(root, text="±", width=5, pady=10, command=btDivide, highlightbackground='#71D3A9', fg='#2F4858')
+btnegate = Button(root, text="±", width=5, pady=10, command=btNegate, highlightbackground='#71D3A9', fg='#2F4858')
 btdot = Button(root, text=".", width=5, pady=10, command=btDivide, highlightbackground='#45B0A3', fg='#2F4858')
 
 btclear.grid(row=1, column=0, sticky="nsew")
