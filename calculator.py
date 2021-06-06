@@ -18,12 +18,26 @@ def btAdd():
     firstNum = e.get()
     global input
     input = int(firstNum)
+    global type 
+    type = "add"
+    e.delete(0, END)
+
+def btMinus():
+    firstNum = e.get()
+    global input
+    input = int(firstNum)
+    global type 
+    type = "minus"
     e.delete(0, END)
 
 def btEqual():
     secondNum = e.get()
     e.delete(0, END)
-    e.insert(0, input + int(secondNum))
+
+    if type == "add":
+        e.insert(0, input + int(secondNum))
+    elif type == "minus":
+        e.insert(0, input - int(secondNum))
 
 bt1 = Button(root, text='1', padx=40, pady=20, command=lambda:btClick(1))
 bt2 = Button(root, text='2', padx=40, pady=20, command=lambda:btClick(2))
@@ -38,6 +52,7 @@ bt0 = Button(root, text='0', padx=40, pady=20, command=lambda:btClick(0))
 btadd = Button(root, text='+', padx=40, pady=20, command=btAdd)
 btequal = Button(root, text='=', padx=100, pady=20, command=btEqual)
 btclear = Button(root, text='Clear', padx=88, pady=20, command=btClear)
+btminus = Button(root, text="-", padx=40, pady=20, command=btMinus)
 
 bt1.grid(row=3, column=0)
 bt2.grid(row=3, column=1)
@@ -55,5 +70,7 @@ bt0.grid(row=4, column=0)
 btclear.grid(row=4, column=1, columnspan=2)
 btadd.grid(row=5, column=0)
 btequal.grid(row=5, column=1, columnspan=2)
+
+btminus.grid(row=6, column=0)
 
 root.mainloop()
