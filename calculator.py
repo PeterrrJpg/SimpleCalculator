@@ -30,6 +30,22 @@ def btMinus():
     type = "minus"
     e.delete(0, END)
 
+def btMultiply():
+    firstNum = e.get()
+    global input
+    input = int(firstNum)
+    global type 
+    type = "multiply"
+    e.delete(0, END)
+
+def btDivide():
+    firstNum = e.get()
+    global input
+    input = int(firstNum)
+    global type 
+    type = "divide"
+    e.delete(0, END)
+
 def btEqual():
     secondNum = e.get()
     e.delete(0, END)
@@ -38,6 +54,10 @@ def btEqual():
         e.insert(0, input + int(secondNum))
     elif type == "minus":
         e.insert(0, input - int(secondNum))
+    elif type == "multiply":
+        e.insert(0, input * int(secondNum))
+    elif type == "divide":
+        e.insert(0, input / int(secondNum))
 
 bt1 = Button(root, text='1', padx=40, pady=20, command=lambda:btClick(1))
 bt2 = Button(root, text='2', padx=40, pady=20, command=lambda:btClick(2))
@@ -53,6 +73,8 @@ btadd = Button(root, text='+', padx=40, pady=20, command=btAdd)
 btequal = Button(root, text='=', padx=100, pady=20, command=btEqual)
 btclear = Button(root, text='Clear', padx=88, pady=20, command=btClear)
 btminus = Button(root, text="-", padx=40, pady=20, command=btMinus)
+btmul = Button(root, text="×", padx=40, pady=20, command=btMultiply)
+btdiv = Button(root, text="÷", padx=40, pady=20, command=btDivide)
 
 bt1.grid(row=3, column=0)
 bt2.grid(row=3, column=1)
@@ -72,5 +94,7 @@ btadd.grid(row=5, column=0)
 btequal.grid(row=5, column=1, columnspan=2)
 
 btminus.grid(row=6, column=0)
+btmul.grid(row=6, column=1)
+btdiv.grid(row=6, column=2)
 
 root.mainloop()
