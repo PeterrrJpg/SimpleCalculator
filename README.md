@@ -10,3 +10,6 @@
     The '±' button negates the number
     The '%' button divides the number by 100
     The '.' button adds decimal point
+
+## To run the program
+    Type 'python3 calculator.py' in terminal
