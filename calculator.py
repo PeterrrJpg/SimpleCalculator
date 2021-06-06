@@ -11,10 +11,10 @@ def btClick(number):
     e.delete(0, END)
     e.insert(0, str(current) + str(number))
 
-def btClear():
+def Clear():
     e.delete(0, END)
 
-def btAdd():
+def Add():
     firstNum = e.get()
     global input
     input = float(firstNum)
@@ -22,7 +22,7 @@ def btAdd():
     type = "add"
     e.delete(0, END)
 
-def btMinus():
+def Minus():
     firstNum = e.get()
     global input
     input = float(firstNum)
@@ -30,7 +30,7 @@ def btMinus():
     type = "minus"
     e.delete(0, END)
 
-def btMultiply():
+def Multiply():
     firstNum = e.get()
     global input
     input = float(firstNum)
@@ -38,7 +38,7 @@ def btMultiply():
     type = "multiply"
     e.delete(0, END)
 
-def btDivide():
+def Divide():
     firstNum = e.get()
     global input
     input = float(firstNum)
@@ -46,17 +46,38 @@ def btDivide():
     type = "divide"
     e.delete(0, END)
 
-def btNegate():
+def Negate():
     firstNum = e.get()
-    if (len(firstNum) == 0):
+    if len(firstNum) == 0:
         e.insert(0, "-")
-    elif (len(firstNum) == 1 and firstNum[0] == '-'):
+    elif len(firstNum) == 1 and firstNum[0] == '-':
         e.delete(0, END)
     else:
         e.delete(0, END)
         e.insert(0, float(firstNum) * -1)
 
-def btEqual():
+def Percentage():
+    firstNum = e.get()
+    if len(firstNum) == 0:
+        return
+    elif len(firstNum) == 1 and firstNum[0] == '-':
+        return
+    else:
+        e.delete(0, END)
+        e.insert(0, float(firstNum) / 100)
+
+def Dot():
+    firstNum = e.get()
+    if len(firstNum) == 0:
+        e.insert(0, '0.')
+        return
+    for i in range (0, len(firstNum)):
+        if firstNum[i] == '.':
+            return
+    e.delete(0, END)
+    e.insert(0, firstNum + '.')
+
+def Equal():
     secondNum = e.get()
     e.delete(0, END)
 
@@ -69,6 +90,7 @@ def btEqual():
     elif type == "divide":
         e.insert(0, input / float(secondNum))
 
+# make buttons
 bt1 = Button(root, text='1', width=5, pady=10, command=lambda:btClick(1), highlightbackground='#45B0A3', fg='#2F4858')
 bt2 = Button(root, text='2', width=5, pady=10, command=lambda:btClick(2), highlightbackground='#45B0A3', fg='#2F4858')
 bt3 = Button(root, text='3', width=5, pady=10, command=lambda:btClick(3), highlightbackground='#45B0A3', fg='#2F4858')
@@ -79,39 +101,46 @@ bt7 = Button(root, text='7', width=5, pady=10, command=lambda:btClick(7), highli
 bt8 = Button(root, text='8', width=5, pady=10, command=lambda:btClick(8), highlightbackground='#45B0A3', fg='#2F4858')
 bt9 = Button(root, text='9', width=5, pady=10, command=lambda:btClick(9), highlightbackground='#45B0A3', fg='#2F4858')
 bt0 = Button(root, text='0', width=10, pady=10, command=lambda:btClick(0), highlightbackground='#45B0A3', fg='#2F4858')
-btadd = Button(root, text='+', width=5, pady=10, command=btAdd, highlightbackground='#ACF4A8', fg='#2F4858')
-btequal = Button(root, text='=', width=5, pady=10, command=btEqual, highlightbackground='#ACF4A8', fg='#2F4858')
-btclear = Button(root, text='AC', width=5, pady=10, command=btClear, highlightbackground='#71D3A9', fg='#2F4858')
-btminus = Button(root, text="-", width=5, pady=10, command=btMinus, highlightbackground='#ACF4A8', fg='#2F4858')
-btmul = Button(root, text="×", width=5, pady=10, command=btMultiply, highlightbackground='#ACF4A8', fg='#2F4858')
-btdiv = Button(root, text="÷", width=5, pady=10, command=btDivide, highlightbackground='#ACF4A8', fg='#2F4858')
-btremainder = Button(root, text="%", width=5, pady=10, command=btDivide, highlightbackground='#71D3A9', fg='#2F4858')
-btnegate = Button(root, text="±", width=5, pady=10, command=btNegate, highlightbackground='#71D3A9', fg='#2F4858')
-btdot = Button(root, text=".", width=5, pady=10, command=btDivide, highlightbackground='#45B0A3', fg='#2F4858')
+btAdd = Button(root, text='+', width=5, pady=10, command=Add, highlightbackground='#ACF4A8', fg='#2F4858')
+btEqual = Button(root, text='=', width=5, pady=10, command=Equal, highlightbackground='#ACF4A8', fg='#2F4858')
+btClear = Button(root, text='AC', width=5, pady=10, command=Clear, highlightbackground='#71D3A9', fg='#2F4858')
+btMinus = Button(root, text="-", width=5, pady=10, command=Minus, highlightbackground='#ACF4A8', fg='#2F4858')
+btMul = Button(root, text="×", width=5, pady=10, command=Multiply, highlightbackground='#ACF4A8', fg='#2F4858')
+btDiv = Button(root, text="÷", width=5, pady=10, command=Divide, highlightbackground='#ACF4A8', fg='#2F4858')
+btPercentage = Button(root, text="%", width=5, pady=10, command=Percentage, highlightbackground='#71D3A9', fg='#2F4858')
+btNegate = Button(root, text="±", width=5, pady=10, command=Negate, highlightbackground='#71D3A9', fg='#2F4858')
+btDot = Button(root, text=".", width=5, pady=10, command=Dot, highlightbackground='#45B0A3', fg='#2F4858')
 
-btclear.grid(row=1, column=0, sticky="nsew")
-btnegate.grid(row=1, column=1, sticky="nsew")
-btremainder.grid(row=1, column=2, sticky="nsew")
-btdiv.grid(row=1, column=3, sticky="nsew")
+# place buttons
 
+# row 1
+btClear.grid(row=1, column=0, sticky="nsew")
+btNegate.grid(row=1, column=1, sticky="nsew")
+btPercentage.grid(row=1, column=2, sticky="nsew")
+btDiv.grid(row=1, column=3, sticky="nsew")
+
+# row 2
 bt7.grid(row=2, column=0, sticky="nsew")
 bt8.grid(row=2, column=1, sticky="nsew")
 bt9.grid(row=2, column=2, sticky="nsew")
-btmul.grid(row=2, column=3, sticky="nsew")
+btMul.grid(row=2, column=3, sticky="nsew")
 
+# row 3
 bt4.grid(row=3, column=0, sticky="nsew")
 bt5.grid(row=3, column=1, sticky="nsew")
 bt6.grid(row=3, column=2, sticky="nsew")
-btminus.grid(row=3, column=3, sticky="nsew")
+btMinus.grid(row=3, column=3, sticky="nsew")
 
+# row 4
 bt1.grid(row=4, column=0, sticky="nsew")
 bt2.grid(row=4, column=1, sticky="nsew")
 bt3.grid(row=4, column=2, sticky="nsew")
-btadd.grid(row=4, column=3, sticky="nsew")
+btAdd.grid(row=4, column=3, sticky="nsew")
 
+# row 5
 bt0.grid(row=5, column=0, columnspan=2, sticky="nsew")
-btdot.grid(row=5, column=2, sticky="nsew")
-btequal.grid(row=5, column=3, sticky="nsew")
+btDot.grid(row=5, column=2, sticky="nsew")
+btEqual.grid(row=5, column=3, sticky="nsew")
 
 root.resizable(False, False)
 root.mainloop()
