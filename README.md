@@ -12,4 +12,4 @@
     The '.' button adds decimal point
 
 ## To run the program
-    Type 'python3 calculator.py' in terminal
+    Type 'python3 calculator.py' on terminal
